@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Personal resume and portfolio of Pei-Chun Liao, Accounting student at National Taipei University.">
+	<meta name="theme-color" content="#f4f1e8">
+	<title>Pei-Chun Liao | Personal Resume</title>
+	<style>
+		:root {
+			color-scheme: light;
+			--bg: #f4f1e8;
+			--paper: #fffdf8;
+			--ink: #292720;
+			--muted: #6d685f;
+			--coffee: #593f31;
+			--olive: #717657;
+			--line: #ded8cb;
+			--soft: #e9e4d8;
+			--section-a: #f8f6ef;
+			--section-b: #e7e9dd;
+		}
+
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
+
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 96px;
+		}
+
+		body {
+			margin: 0;
+			color: var(--ink);
+			background: var(--bg);
+			background-image: repeating-linear-gradient(135deg, transparent 0, transparent 32px, rgba(89, 63, 49, 0.025) 33px, transparent 34px);
+			font-family: "Avenir Next", "Segoe UI", sans-serif;
+			line-height: 1.75;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		a:focus-visible {
+			outline: 2px solid var(--olive);
+			outline-offset: 4px;
+		}
+
+		.container {
+			width: min(1060px, calc(100% - 48px));
+			margin-inline: auto;
+		}
+
+		.site-header {
+			position: sticky;
+			top: 0;
+			z-index: 5;
+			border-bottom: 1px solid rgba(89, 63, 49, 0.16);
+			background: rgba(244, 241, 232, 0.96);
+			backdrop-filter: blur(12px);
+		}
+
+		.nav {
+			min-height: 72px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 24px;
+		}
+
+		.brand,
+		h1,
+		h2,
+		.feature h3 {
+			font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+		}
+
+		.brand {
+			display: inline-flex;
+			align-items: baseline;
+			gap: 10px;
+			color: var(--coffee);
+			font-size: 19px;
+			font-weight: 700;
+			white-space: nowrap;
+		}
+
+		.brand-en {
+			color: var(--muted);
+			font-family: "Avenir Next", "Segoe UI", sans-serif;
+			font-size: 11px;
+			font-weight: 500;
+		}
+
+		.nav-links {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 22px;
+			color: var(--muted);
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.nav-links a {
+			padding-block: 8px;
+			transition: color 180ms ease;
+		}
+
+		.nav-links a:hover {
+			color: var(--coffee);
+		}
+
+		.hero {
+			min-height: 620px;
+			display: grid;
+			grid-template-columns: minmax(260px, 0.82fr) minmax(0, 1.18fr);
+			align-items: center;
+			gap: 76px;
+			padding-block: 68px 82px;
+		}
+
+		.portrait-column {
+			width: min(100%, 340px);
+			justify-self: center;
+			text-align: center;
+			animation: rise-in 650ms ease both;
+		}
+
+		.portrait-frame {
+			width: 100%;
+			aspect-ratio: 1;
+			display: grid;
+			place-items: center;
+			overflow: hidden;
+			border: 1px solid rgba(89, 63, 49, 0.2);
+			border-radius: 50%;
+			background-color: #e7e3d7;
+			background-image: linear-gradient(145deg, rgba(255, 253, 248, 0.72), transparent 58%), repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(113, 118, 87, 0.08) 21px, transparent 22px);
+		}
+
+		.photo-placeholder {
+			width: 100%;
+			height: 100%;
+			aspect-ratio: 1;
+			display: grid;
+			align-content: center;
+			justify-items: center;
+			border: 0;
+			border-radius: 50%;
+			background: transparent;
+			color: var(--coffee);
+		}
+
+		.photo-placeholder span,
+		.photo-placeholder small {
+			font-size: 9px;
+			font-weight: 700;
+		}
+
+		.photo-placeholder strong {
+			font-family: Georgia, serif;
+			font-size: 42px;
+			font-weight: 500;
+			line-height: 1.25;
+		}
+
+		.photo-caption {
+			margin: 14px 0 0;
+			color: var(--muted);
+			font-size: 10px;
+			text-transform: uppercase;
+		}
+
+		.hero-copy {
+			max-width: 610px;
+			animation: rise-in 650ms 100ms ease both;
+		}
+
+		.eyebrow,
+		.section-kicker,
+		.date {
+			margin: 0;
+			color: var(--olive);
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		h1 {
+			margin: 16px 0 0;
+			font-size: 68px;
+			font-weight: 500;
+			line-height: 1.2;
+		}
+
+		.english-name {
+			margin: 5px 0 20px;
+			color: var(--coffee);
+			font-family: Georgia, serif;
+			font-size: 25px;
+		}
+
+		.hero-intro {
+			max-width: 510px;
+			margin: 0;
+			color: var(--muted);
+			font-size: 15px;
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			margin-top: 28px;
+		}
+
+		.button {
+			min-height: 44px;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 18px;
+			border: 1px solid var(--coffee);
+			color: var(--coffee);
+			font-size: 11px;
+			font-weight: 700;
+			transition: background-color 180ms ease, color 180ms ease;
+		}
+
+		.button.primary {
+			background: var(--coffee);
+			color: var(--paper);
+		}
+
+		.button:hover {
+			border-color: var(--olive);
+			background: var(--olive);
+			color: white;
+		}
+
+		.section {
+			padding-block: 72px;
+			border-top: 1px solid var(--line);
+			background-color: var(--section-a);
+			scroll-margin-top: 88px;
+		}
+
+		#about,
+		#activities,
+		#skills { background-color: var(--section-a); }
+		#education,
+		#experience,
+		#contact { background-color: var(--section-b); }
+
+		.section-heading {
+			max-width: 700px;
+			margin-bottom: 32px;
+		}
+
+		h2 {
+			margin: 5px 0 8px;
+			color: var(--coffee);
+			font-size: 37px;
+			font-weight: 500;
+			line-height: 1.25;
+		}
+
+		.section-heading > p:last-child,
+		.about-copy p {
+			color: var(--muted);
+			font-size: 14px;
+		}
+
+		.about-layout {
+			display: grid;
+			grid-template-columns: 1fr 0.72fr;
+			gap: 64px;
+			align-items: start;
+		}
+
+		.about-copy p {
+			margin: 0 0 15px;
+		}
+
+		.about-note {
+			padding: 20px 23px;
+			border-left: 2px solid var(--olive);
+			background: rgba(255, 253, 248, 0.72);
+			color: var(--coffee);
+			font-family: Georgia, serif;
+			font-size: 19px;
+		}
+
+		.about-note p {
+			margin: 0;
+		}
+
+		.education-list {
+			max-width: 790px;
+			margin-left: 8px;
+			padding-left: 28px;
+			border-left: 1px solid #c9c1b2;
+		}
+
+		.education-item {
+			position: relative;
+			padding-bottom: 28px;
+		}
+
+		.education-item:last-child {
+			padding-bottom: 0;
+		}
+
+		.education-item::before {
+			position: absolute;
+			top: 9px;
+			left: -34px;
+			width: 11px;
+			height: 11px;
+			border: 2px solid var(--bg);
+			border-radius: 50%;
+			background: var(--olive);
+			content: "";
+		}
+
+		.education-item h3 {
+			margin: 4px 0;
+			color: var(--coffee);
+			font-size: 17px;
+		}
+
+		.education-item > p:last-child,
+		.feature > p:last-child {
+			margin: 0;
+			color: var(--muted);
+			font-size: 13px;
+		}
+
+		.feature-grid {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 18px;
+		}
+
+		.feature {
+			min-height: 190px;
+			padding: 24px 25px;
+			border: 1px solid var(--line);
+			background: var(--paper);
+			transition: transform 180ms ease, box-shadow 180ms ease;
+		}
+
+		.feature:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 12px 25px rgba(57, 43, 32, 0.07);
+		}
+
+		.feature h3 {
+			margin: 12px 0 8px;
+			color: var(--coffee);
+			font-size: 21px;
+			font-weight: 500;
+			line-height: 1.45;
+		}
+
+		.skills {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 9px;
+			margin-top: 20px;
+		}
+
+		.skill {
+			padding: 7px 12px;
+			border: 1px solid #cbc3b4;
+			color: var(--coffee);
+			font-size: 11px;
+		}
+
+		.contact-methods {
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 28px;
+		}
+
+		.contact-method {
+			padding-top: 15px;
+			border-top: 1px solid var(--line);
+		}
+
+		.contact-method h3 {
+			margin: 0 0 8px;
+			color: var(--olive);
+			font-size: 10px;
+			font-weight: 700;
+			text-transform: uppercase;
+		}
+
+		.contact-method p,
+		.email-link {
+			color: var(--coffee);
+			font-size: 14px;
+			overflow-wrap: anywhere;
+		}
+
+		.email-link {
+			font-weight: 700;
+			text-decoration: underline;
+			text-decoration-color: #b7a999;
+			text-underline-offset: 4px;
+		}
+
+		.contact-method p {
+			margin: 0;
+		}
+
+		footer {
+			padding-block: 20px;
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 10px;
+		}
+
+		.footer-content {
+			display: flex;
+			justify-content: space-between;
+			gap: 18px;
+		}
+
+		@keyframes rise-in {
+			from { opacity: 0; transform: translateY(14px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@media (max-width: 760px) {
+			html { scroll-padding-top: 120px; }
+			.container { width: min(100% - 36px, 600px); }
+			.nav {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 3px;
+				padding-block: 10px;
+			}
+			.nav-links { gap: 15px; font-size: 9px; }
+			.hero {
+				min-height: 0;
+				grid-template-columns: 1fr;
+				gap: 34px;
+				padding-block: 42px 60px;
+			}
+			.portrait-column { width: min(250px, 74%); }
+			.hero-copy { justify-self: center; text-align: center; }
+			h1 { font-size: 52px; }
+			.hero-actions { justify-content: center; }
+			.section { padding-block: 56px; }
+			h2 { font-size: 33px; }
+			.about-layout { grid-template-columns: 1fr; gap: 23px; }
+		}
+
+		@media (max-width: 480px) {
+			.nav-links { column-gap: 11px; row-gap: 0; }
+			h1 { font-size: 46px; }
+			.english-name { font-size: 22px; }
+			.feature-grid { grid-template-columns: 1fr; }
+			.feature { min-height: 0; }
+			.footer-content { flex-direction: column; gap: 3px; }
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after {
+				scroll-behavior: auto !important;
+				animation-duration: 0.01ms !important;
+				animation-iteration-count: 1 !important;
+				transition-duration: 0.01ms !important;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header class="site-header">
+		<nav class="nav container" aria-label="Main navigation">
+			<a class="brand" href="#home"><span lang="zh-Hant">廖珮君</span><span class="brand-en">Pei-Chun Liao</span></a>
+			<div class="nav-links">
+				<a href="#about">About</a>
+				<a href="#education">Education</a>
+				<a href="#activities">Activities</a>
+				<a href="#experience">Experience</a>
+				<a href="#skills">Skills</a>
+				<a href="#contact">Contact</a>
+			</div>
+		</nav>
+	</header>
+
+	<main>
+		<section class="hero container" id="home" aria-labelledby="page-title">
+			<div class="portrait-column">
+				<div class="portrait-frame" role="img" aria-label="Circular portrait placeholder">
+					<div class="photo-placeholder">
+						<span>PHOTO</span>
+						<strong>PCL</strong>
+						<small>ADD PORTRAIT</small>
+					</div>
+				</div>
+				<p class="photo-caption">Personal portrait</p>
+			</div>
+			<div class="hero-copy">
+				<p class="eyebrow">Welcome</p>
+				<h1 id="page-title" lang="zh-Hant">廖珮君</h1>
+				<p class="english-name">Pei-Chun Liao</p>
+				<p class="hero-intro">Department of Accountancy, National Taipei University</p>
+				<div class="hero-actions">
+					<a class="button primary" href="#about">Explore my journey</a>
+					<a class="button" href="#contact">Get in touch</a>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="about" aria-labelledby="about-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">A little about me</p>
+					<h2 id="about-title">About Me</h2>
+				</div>
+				<div class="about-layout">
+					<div class="about-copy">
+						<p>I am currently a third-year student in the Department of Accounting at National Taipei University. My academic interests include financial analysis, business research, and the ways brands communicate value.</p>
+						<p>From presenting a high school financial analysis project to researching Starbucks' brand and marketing strategy, I have practiced gathering information, connecting ideas, and presenting findings with clarity.</p>
+					</div>
+					<aside class="about-note">
+						<p>Curious by nature, careful with details, and always ready to learn something new.</p>
+					</aside>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="education" aria-labelledby="education-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">Learning path</p>
+					<h2 id="education-title">Education</h2>
+				</div>
+				<div class="education-list">
+					<article class="education-item">
+						<p class="date">September 2024 &mdash; Present</p>
+						<h3>National Taipei University</h3>
+						<p>Department of Accounting &middot; Third-year student</p>
+					</article>
+					<article class="education-item">
+						<p class="date">September 2021 &mdash; June 2024</p>
+						<h3>Minglun High School</h3>
+						<p>Graduated</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section tinted-section" id="activities" aria-labelledby="activities-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">Projects &amp; participation</p>
+					<h2 id="activities-title">Activities</h2>
+					<p>Research and communication experiences that shaped how I approach new questions.</p>
+				</div>
+				<div class="feature-grid">
+					<article class="feature">
+						<p class="date">Independent Study &middot; High School</p>
+						<h3>Financial Analysis Research Showcase</h3>
+						<p>Prepared and presented a financial analysis report, developing oral communication and the ability to synthesize research into key findings.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="experience" aria-labelledby="experience-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">Selected research</p>
+					<h2 id="experience-title">Experience</h2>
+				</div>
+				<div class="feature-grid">
+					<article class="feature">
+						<p class="date">Brand Analysis &middot; Research Project</p>
+						<h3>Starbucks Brand Analysis &amp; Marketing Strategy</h3>
+						<p>Explored Starbucks' brand positioning and marketing strategy through research and analysis, bringing observations together into a structured project.</p>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section tinted-section" id="skills" aria-labelledby="skills-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">Strengths in practice</p>
+					<h2 id="skills-title">Skills</h2>
+					<p>Research and communication skills developed through academic projects and presentations.</p>
+				</div>
+				<div class="skills" aria-label="Skills">
+					<span class="skill">Financial Analysis</span>
+					<span class="skill">Business Research</span>
+					<span class="skill">Information Synthesis</span>
+					<span class="skill">Oral Presentation</span>
+					<span class="skill">Marketing Analysis</span>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="contact" aria-labelledby="contact-title">
+			<div class="container">
+				<div class="section-heading">
+					<p class="section-kicker">Contact</p>
+					<h2 id="contact-title">Contact</h2>
+				</div>
+				<div class="contact-methods">
+					<div class="contact-method">
+						<h3>Email</h3>
+						<a class="email-link" href="mailto:carolliao941208@gmail.com">carolliao941208@gmail.com</a>
+					</div>
+					<div class="contact-method">
+						<h3>Location</h3>
+						<p>Department of Accountancy, National Taipei University, New Taipei City</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="container footer-content">
+			<span>Pei-Chun Liao</span>
+			<span>Personal Resume &middot; 2026</span>
+		</div>
+	</footer>
+</body>
+</html>
